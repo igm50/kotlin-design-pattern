@@ -1,0 +1,45 @@
+@startuml
+
+title Compositeパターン
+
+abstract class Composite {
+  ====
+}
+
+class Branch {
+  composites: Collection<Composite>
+  ====
+}
+
+class Leaf {
+  ====
+}
+
+Composite <|-- Branch
+Composite <|-- Leaf
+
+@enduml
+
+@startuml
+
+title FileSystem
+
+abstract FileSystem {
+  ====
+  + size(): Long
+}
+
+class Directory {
+  - files: List<FileSystem>
+  ====
+}
+
+class File {
+  - size: Long
+  ====
+}
+
+FileSystem <|-- Directory
+FileSystem <|-- File
+
+@enduml

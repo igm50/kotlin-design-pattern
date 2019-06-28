@@ -1,0 +1,49 @@
+@startuml
+
+title Template Methodパターン
+
+class AbstractTemplate {
+  ====
+  parentProcess()
+  childProcess1()
+  childProcess2()
+  childProcess3()
+}
+
+class ConcleteTemplate {
+  ====
+  childProcess1()
+  childProcess2()
+  childProcess3()
+}
+
+AbstractTemplate <|-down- ConcleteTemplate
+
+@enduml
+
+@startuml
+
+title Name
+
+class Name {
+  - firstName: String
+  - lastName: String
+  ====
+  + fullName(): String
+  - getFirstName(): String
+  - getLastName(): String
+  - buildName(): String
+}
+
+class JapaneseName {
+  ====
+}
+
+class AmericanName {
+  ====
+}
+
+Name <|-down- JapaneseName
+Name <|-down- AmericanName
+
+@enduml

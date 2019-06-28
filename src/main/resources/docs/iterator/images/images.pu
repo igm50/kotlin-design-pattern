@@ -1,0 +1,86 @@
+@startuml
+
+title Iteratorパターン
+
+interface Aggregate {
+  ====
+  + iterator(): Iterator
+}
+
+interface Iterator{
+  ====
+  + hasNext(): Boolean
+  + next(): Element
+}
+
+class ConcreteAggregate {
+  ====
+}
+
+class ConcreteIterator {
+  ====
+}
+
+Aggregate -right-> Iterator
+ConcreteAggregate -right-> ConcreteIterator
+
+ConcreteAggregate .up.|> Aggregate
+ConcreteIterator .up.|> Iterator
+
+@enduml
+
+@startuml
+
+title Books
+
+class Book {
+  + title: String
+  + author: String
+}
+
+interface Books {
+  ====
+  + iterator(): BooksIterator
+}
+
+interface BooksIterator{
+  ====
+  + hasNext(): Boolean
+  + next(): Book
+}
+
+class BookBox {
+  ~ books: List<Book>
+  ====
+}
+
+class BoxIterator {
+  - iterator: Iterator
+  ====
+}
+
+class BookShelf {
+  ~ firstLevel: List<Book>
+  ~ secondLevel: List<Book>
+  ~ MAX: Integer
+  ====
+}
+
+class ShelfIterator {
+  - bookShelf: BookShelf
+  ====
+}
+
+Book -o Books
+
+Books -right-> BooksIterator
+BookBox --> BoxIterator
+BookShelf --> ShelfIterator
+
+BookBox .up.|> Books
+BookShelf .up.|> Books
+BoxIterator .up.|> BooksIterator
+ShelfIterator .up.|> BooksIterator
+
+
+@enduml

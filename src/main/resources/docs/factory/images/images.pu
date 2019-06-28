@@ -1,0 +1,69 @@
+@startuml
+
+title Factory Methodパターン
+
+interface Factory {
+  + create(): AbstractTarget
+}
+
+class ConcreteFactory {
+  ====
+}
+
+class AbstractTarget {
+  ====
+}
+
+class ConcreteTarget {
+  ====
+}
+
+Factory <|.down. ConcreteFactory
+AbstractTarget <|-down- ConcreteTarget
+Factory -right-> AbstractTarget
+ConcreteFactory -right-> ConcreteTarget
+
+@enduml
+
+@startuml
+
+title Pencil Factory
+
+class PencilFactory {
+  ====
+  + create(): Pencil
+}
+
+class RedPencilFactory {
+  ====
+}
+
+class BluePencilFactory {
+  ====
+}
+
+class Pencil {
+  # core: String
+  # cover: Stirng
+  ====
+  + write(): String
+}
+
+class RedPencil {
+  ====
+}
+
+class BluePencil {
+  ====
+}
+
+PencilFactory <|-- RedPencilFactory
+PencilFactory <|-- BluePencilFactory
+Pencil <|-- RedPencil
+Pencil <|-- BluePencil
+
+PencilFactory --> Pencil
+RedPencilFactory --> RedPencil
+BluePencilFactory --> BluePencil
+
+@enduml

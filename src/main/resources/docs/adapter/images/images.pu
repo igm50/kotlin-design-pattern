@@ -1,0 +1,69 @@
+@startuml
+
+title Adapterパターン
+
+class Client {
+
+}
+
+interface Target {
+  ====
+  + wrapper(): T
+}
+
+class Adapter {
+  - adaptee: Adaptee
+  ====
+}
+
+class Adaptee {
+  ====
+  + concrete(): T
+}
+
+Client --> Target: use
+Client --> Adapter: create
+Adapter .left.|> Target
+Adapter o-right- Adaptee
+
+@enduml
+
+@startuml
+
+title Calculator-LightBulb adapter
+
+class Client {
+
+}
+
+class Calculator {
+  ====
+  + flash(): Light
+}
+
+class Computer {
+  - lightBulb: LightBulb
+  ====
+  + flash(): Light
+}
+
+class LightBulb {
+  ====
+  + flash(): Light
+}
+
+class Light {
+  + amount: Int
+  ====
+}
+
+Client --> Calculator
+Client --> Computer
+Computer -left-|> Calculator
+Computer o-right- LightBulb
+
+Calculator --> Light
+Computer --> Light
+LightBulb --> Light
+
+@enduml
