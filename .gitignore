@@ -69,3 +69,4 @@ fabric.properties
 
 # Travis.CI 対応
 gradle/
+.gradle/
