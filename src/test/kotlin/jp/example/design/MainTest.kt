@@ -1,5 +1,7 @@
 package jp.example.design
 
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.fail
 import org.junit.platform.runner.JUnitPlatform
 import org.junit.platform.suite.api.SelectPackages
 import org.junit.platform.suite.api.SuiteDisplayName
