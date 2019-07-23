@@ -10,9 +10,4 @@ import org.junit.runner.RunWith
 @RunWith(JUnitPlatform::class)
 @SuiteDisplayName("All test suite.")
 @SelectPackages("jp.example.design")
-class MainTest {
-    @Test
-    fun failingTest() {
-        fail { "Confirmation of Travis.CI test failing." }
-    }
-}
+class MainTest
